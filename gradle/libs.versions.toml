@@ -1,0 +1,37 @@
+[versions]
+agp = "8.5.2"
+kotlin = "1.9.0"
+androidx-core = "1.15.0"
+androidx-runtime = "2.8.7"
+compose-activity = "1.9.3"
+compose-navigation = "2.8.3"
+konfetti = "2.0.4"
+constraintlayout = "2.2.0"
+appcompat = "1.7.0"
+material = "1.12.0"
+
+[libraries]
+androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-runtime" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.3.1" }
+
+compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2024.10.01" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version = "1.7.5" }
+compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose-activity" }
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
+
+konfetti = { group = "nl.dionsegijn", name = "konfetti-compose", version.ref = "konfetti" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+[bundles]
+androidX = ["androidx-core", "androidx-lifecycle"]
+ui = ["compose-ui", "compose-graphics", "compose-tooling-preview", "compose-activity", "androidx-material3", "konfetti", "compose-navigation"]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

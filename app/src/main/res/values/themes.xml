@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.StudyE" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Personalize as cores e outros atributos do tema -->
+        <item name="colorPrimary">#260f69</item>
+        <item name="colorPrimaryDark">#515151</item>
+    </style>
+</resources>

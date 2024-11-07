@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">StudyE</string>
+    <string name="welcome_message">Que tal começar a estudar?</string>
+    <string name="email_hint">Digite seu email</string>
+    <string name="password_hint">Digite sua senha</string>
+    <string name="forgot_password">Esqueceu a senha? Recupere aqui</string>
+    <string name="login">Login</string>
+    <string name="or_login_with">Ou faça login com</string>
+    <string name="no_account">Não tem uma conta?</string>
+    <string name="sign_up">Se cadastre</string>
+    <string name="google_login">Login com Google</string>
+
+</resources>
