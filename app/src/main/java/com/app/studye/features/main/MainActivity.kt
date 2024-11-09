@@ -1,10 +1,13 @@
-package com.app.studye
+package com.app.studye.features.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.app.studye.R
+import com.app.studye.features.auth.login.LoginActivity
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,10 +17,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_intro)
 
         // Aguarda 2 segundos e muda para a tela de login
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish() // Fecha a atividade de introdução
-        }, 2000) // 2000 milissegundos = 2 segundos
+        lifecycleScope.launch {
+            delay(2000)
+            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+            finish()
+        }
     }
 }
