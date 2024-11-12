@@ -1,25 +1,43 @@
 package com.app.studye.features.main
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.app.studye.R
+import androidx.activity.ComponentActivity
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.app.studye.features.auth.login.LoginActivity
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.app.studye.features.DashboardActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
+
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Configura o layout de introdução
-        setContentView(R.layout.activity_intro)
+        // Inicializar SharedPreferences Encriptados
+        val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        sharedPreferences = EncryptedSharedPreferences.create(
+            "secure_prefs",
+            masterKeyAlias,
+            applicationContext,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
 
-        // Aguarda 2 segundos e muda para a tela de login
-        lifecycleScope.launch {
-            delay(2000)
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+        // Verificar o estado de login
+        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
+
+        if (isLoggedIn) {
+            // Redirecionar para DashboardActivity
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            // Redirecionar para LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
             finish()
         }
     }

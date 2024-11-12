@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.app.studye.SupabaseAuthViewModel
+import com.app.studye.features.auth.login.SupabaseAuthViewModel
 import com.app.studye.data.model.UserState
 import com.app.studye.databinding.ActivityRegisterBinding
 
@@ -22,9 +22,16 @@ class RegisterActivity : AppCompatActivity() {
 
         // Configura o clique no botão de registro
         binding.registerButton.setOnClickListener {
+            val name = binding.nameInput.text.toString().trim()
             val email = binding.emailInput.text.toString().trim()
             val password = binding.passwordInput.text.toString().trim()
             val confirmPassword = binding.confirmPasswordInput.text.toString().trim()
+
+            if (name.isEmpty()){
+                binding.nameInput.error = "Por favor, insira um nome"
+                binding.nameInput.requestFocus()
+                return@setOnClickListener
+            }
 
             if (email.isEmpty()) {
                 binding.emailInput.error = "Por favor, insira um email"
@@ -44,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            authViewModel.signUp(email, password)
+            authViewModel.signUp(name, email, password)
         }
 
         // Observa o estado do usuário

@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.app.studye.data.model.UserState
-import com.app.studye.data.network.SupabaseClient.client
+import com.app.studye.data.network.SupabaseClient.supabase
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.exception.AuthRestException
 import io.github.jan.supabase.auth.providers.builtin.Email
@@ -24,7 +24,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 // Tenta realizar o login
-                client.auth.signInWith(Email) {
+                supabase.auth.signInWith(Email) {
                     email = userEmail
                     password = userPassword
                 }

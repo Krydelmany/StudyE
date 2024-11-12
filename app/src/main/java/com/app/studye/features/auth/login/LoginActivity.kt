@@ -1,24 +1,43 @@
 package com.app.studye.features.auth.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.app.studye.data.model.UserState
 import com.app.studye.databinding.ActivityLoginBinding
+import com.app.studye.features.DashboardActivity
 import com.app.studye.features.auth.register.RegisterActivity
-import com.app.studye.features.main.MainActivity
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
+import android.util.Log
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModels()
+    private lateinit var sharedPreferences: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Inicializar SharedPreferences Encriptados
+        val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        sharedPreferences = EncryptedSharedPreferences.create(
+            "secure_prefs",
+            masterKeyAlias,
+            applicationContext,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+
+        // Carregar credenciais salvas, se existirem
+        loadSavedCredentials()
 
         // Configurações iniciais
         setupListeners()
@@ -59,8 +78,19 @@ class LoginActivity : AppCompatActivity() {
                 }
                 is UserState.Success -> {
                     binding.loginButton.isEnabled = true
-                    // Navegar para a MainActivity ou tela principal
-                    val intent = Intent(this, MainActivity::class.java)
+                    // Salvar credenciais se o CheckBox estiver marcado
+                    if (binding.rememberMeCheckBox.isChecked) {
+                        saveCredentials(binding.emailInput.text.toString().trim(), binding.passwordInput.text.toString())
+                    } else {
+                        clearCredentials()
+                    }
+                    // Definir o flag de login
+                    with(sharedPreferences.edit()) {
+                        putBoolean("is_logged_in", true)
+                        apply()
+                    }
+                    // Navegar para a Dashboard ou tela principal
+                    val intent = Intent(this, DashboardActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -95,5 +125,36 @@ class LoginActivity : AppCompatActivity() {
         }
 
         return isValid
+    }
+
+    private fun saveCredentials(email: String, password: String) {
+        with(sharedPreferences.edit()) {
+            putString("email", email)
+            putString("password", password)
+            apply()
+        }
+        Log.d("LoginActivity", "Credenciais salvas")
+    }
+
+    private fun loadSavedCredentials() {
+        val savedEmail = sharedPreferences.getString("email", null)
+        val savedPassword = sharedPreferences.getString("password", null)
+
+        if (savedEmail != null && savedPassword != null) {
+            binding.emailInput.setText(savedEmail)
+            binding.passwordInput.setText(savedPassword)
+            binding.rememberMeCheckBox.isChecked = true
+            // Opcional: Auto-login
+            loginViewModel.login(savedEmail, savedPassword)
+        }
+    }
+
+    private fun clearCredentials() {
+        with(sharedPreferences.edit()) {
+            remove("email")
+            remove("password")
+            apply()
+        }
+        Log.d("LoginActivity", "Credenciais limpas")
     }
 }

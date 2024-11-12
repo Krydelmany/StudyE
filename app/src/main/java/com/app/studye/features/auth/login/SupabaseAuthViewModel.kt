@@ -1,10 +1,10 @@
-package com.app.studye
+package com.app.studye.features.auth.login
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.studye.data.model.UserState
-import com.app.studye.data.network.SupabaseClient.client
+import com.app.studye.data.network.SupabaseClient.supabase
 import com.app.studye.utils.SharedPreferenceHelper
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email
@@ -20,17 +20,16 @@ class SupabaseAuthViewModel(application: Application) : AndroidViewModel(applica
     private val _userState = MutableLiveData<UserState>(UserState.Idle)
     val userState: LiveData<UserState> get() = _userState
 
-    fun signUp(userEmail: String, userPassword: String) {
+    fun signUp(userName: String, userEmail: String, userPassword: String) {
         _userState.value = UserState.Loading
 
         viewModelScope.launch {
             try {
-                // Lógica de registro
-                client.auth.signUpWith(Email) {
+                // Registro do usuário com email e senha
+                supabase.auth.signUpWith(Email) {
                     email = userEmail
                     password = userPassword
                 }
-
                 // Salva o token após o cadastro bem-sucedido
                 saveToken()
 
@@ -55,7 +54,7 @@ class SupabaseAuthViewModel(application: Application) : AndroidViewModel(applica
     private fun saveToken() {
         viewModelScope.launch {
             try {
-                val accessToken = client.auth.currentAccessTokenOrNull()
+                val accessToken = supabase.auth.currentAccessTokenOrNull()
                 if (accessToken != null) {
                     val sharedPref = SharedPreferenceHelper(getApplication())
                     sharedPref.saveStringData("accessToken", accessToken)
