@@ -19,7 +19,7 @@
     <!-- Textos dos Botões -->
     <string name="yes">Sim</string>
     <string name="no">Não</string>
-    <string name="welcome_message">Olá, Usuário!</string>
+    <string name="welcome_message">Olá, %s!</string>
     <string name="continue_studies">Continue seus estudos</string>
 
     <string name="your_progress">Seu progresso</string>

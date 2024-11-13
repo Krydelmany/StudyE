@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 object SupabaseClient {
     val supabase = createSupabaseClient(
         supabaseUrl = "https://eequonbvkgojqjifdrma.supabase.co",
-        supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVlcXVvbmJ2a2dvanFqaWZkcm1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAzMzE0MTUsImV4cCI6MjA0NTkwNzQxNX0.HzdKez8PVZp3sQuzxpHNEHoX1wwnNNAZxu7cniWqz_U"
+        supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVlcXVvbmJ2a2dvanFqaWZkcm1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE0Mzc4NjksImV4cCI6MjA0NzAxMzg2OX0.-NV9dcT7j4s63e4pdGxc1cq98Dq4emWynpurSmosd7A"
     ) {
         install(Auth)
         install(Postgrest)

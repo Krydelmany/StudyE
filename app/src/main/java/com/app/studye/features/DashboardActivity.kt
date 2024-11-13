@@ -1,6 +1,7 @@
 package com.app.studye.features
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
@@ -16,10 +17,13 @@ import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
+    private lateinit var sharedPreferences: SharedPreferences
 
     // Adaptadores para os RecyclerViews
     private lateinit var coursesAdapter: CoursesAdapter
@@ -32,18 +36,32 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Inicializar SharedPreferences Encriptados
+        val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        sharedPreferences = EncryptedSharedPreferences.create(
+            "secure_prefs",
+            masterKeyAlias,
+            applicationContext,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+
         // Configurar os RecyclerViews
         setupRecyclerViews()
 
         // Configurar o Gráfico de Progresso
         setupProgressChart()
 
+        // Buscar o nome completo do usuário dos SharedPreferences e exibir apenas o primeiro nome na saudação
+        val fullName = sharedPreferences.getString("user_name", "Usuário") ?: "Usuário"
+        val firstName = fullName.split(" ").firstOrNull() ?: "Usuário" // Obtém o primeiro nome
+        val welcomeMessage = getString(R.string.welcome_message, firstName)
+        binding.headerCard.findViewById<TextView>(R.id.welcomeText).text = welcomeMessage
+
         // Configurar o botão de Configurações
         binding.headerCard.findViewById<ImageButton>(R.id.settingsButton).setOnClickListener {
             openSettings()
         }
-
-        // Configurar Atalhos Rápidos
 
         // Configurar Citação Motivacional
         setupMotivationalQuote()
@@ -93,7 +111,6 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
-
 
     private fun openNewAnnotation() {
         val intent = Intent(this, NewAnnotationActivity::class.java)

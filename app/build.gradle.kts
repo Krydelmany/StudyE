@@ -76,7 +76,6 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-compose:3.0.2")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.2")
 
-
     // Supabase
     implementation("io.github.jan-tennert.supabase:postgrest-kt:3.0.1")
     implementation("io.github.jan-tennert.supabase:auth-kt:3.0.1")
@@ -93,4 +92,7 @@ dependencies {
     implementation ("com.github.PhilJay:MPAndroidChart:3.1.0")
     implementation ("androidx.security:security-crypto:1.1.0-alpha06")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 }
