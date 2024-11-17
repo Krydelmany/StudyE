@@ -86,7 +86,6 @@ class DashboardActivity : AppCompatActivity() {
     private fun setupProgressChart() {
         val barChart: BarChart = binding.progressChart
 
-        // Exemplo de dados para o gráfico
         val entries = ArrayList<BarEntry>()
         entries.add(BarEntry(1f, 50f))
         entries.add(BarEntry(2f, 80f))
@@ -100,11 +99,10 @@ class DashboardActivity : AppCompatActivity() {
         val barData = BarData(barDataSet)
         barChart.data = barData
 
-        // Configurações adicionais do gráfico
         barChart.description.isEnabled = false
         barChart.axisRight.isEnabled = false
         barChart.animateY(1000)
-        barChart.invalidate() // Atualiza o gráfico
+        barChart.invalidate()
     }
 
     private fun openSettings() {
@@ -120,8 +118,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun setupMotivationalQuote() {
         binding.quoteCard.findViewById<TextView>(R.id.motivationalQuote).text = "“O sucesso é a soma de pequenos esforços repetidos dia após dia.”"
     }
-
-    // Funções para obter dados mockados (substitua com dados reais do seu backend)
+    // dados mockados
     private fun getMockCourses(): List<String> {
         return listOf("Matéria 1", "Matéria 2", "Matéria 3")
     }

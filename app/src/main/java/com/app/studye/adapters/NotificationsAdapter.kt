@@ -10,7 +10,6 @@ class NotificationsAdapter(private val notifications: List<String>) : RecyclerVi
     inner class NotificationViewHolder(private val binding: ItemNotificationBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(notification: String) {
             binding.notificationText.text = notification
-            // Configure outros elementos, se houver
         }
     }
 

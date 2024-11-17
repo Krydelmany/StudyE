@@ -76,7 +76,12 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 is UserState.Error -> {
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, state.error, Toast.LENGTH_SHORT).show()
+                    val errorMessage = when (state.errorCode) {
+                        "auth/email-already-in-use" -> "Este email já está registrado."
+                        "auth/weak-password" -> "A senha é muito fraca."
+                        else -> state.error
+                    }
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                 }
                 else -> {
                     binding.progressBar.visibility = View.GONE

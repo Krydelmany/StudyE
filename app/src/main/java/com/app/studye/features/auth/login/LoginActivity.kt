@@ -13,6 +13,7 @@ import com.app.studye.features.auth.register.RegisterActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import android.util.Log
+import android.util.Patterns
 
 class LoginActivity : AppCompatActivity() {
 
@@ -112,6 +113,9 @@ class LoginActivity : AppCompatActivity() {
 
         if (email.isEmpty()) {
             binding.emailInputLayout.error = "Por favor, insira seu email"
+            isValid = false
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.emailInputLayout.error = "Email inválido"
             isValid = false
         } else {
             binding.emailInputLayout.error = null

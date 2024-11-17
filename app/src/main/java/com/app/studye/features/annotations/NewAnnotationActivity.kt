@@ -3,7 +3,7 @@ package com.app.studye.features.annotations
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.app.studye.databinding.ActivityNewAnnotationBinding
-
+// TODO - Adicionar código ao fazer tela de anotaçoes
 class NewAnnotationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewAnnotationBinding
@@ -13,11 +13,9 @@ class NewAnnotationActivity : AppCompatActivity() {
         binding = ActivityNewAnnotationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configurar a ActionBar (opcional)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Nova Anotação"
 
-        // Implementar lógica para criar uma nova anotação
         setupCreateAnnotation()
     }
 
@@ -30,21 +28,11 @@ class NewAnnotationActivity : AppCompatActivity() {
         binding.createAnnotationButton.setOnClickListener {
             val annotationText = binding.annotationEditText.text.toString().trim()
             if (annotationText.isNotEmpty()) {
-                // Salvar a anotação ou enviar para o backend
-                // Exemplo:
-                // saveAnnotation(annotationText)
-                finish() // Fechar a Activity após salvar
+                finish() // fecha a janela ao salvar
             } else {
-                // Mostrar mensagem de erro
+                // mostra mensagem de erro
                 binding.annotationEditText.error = "Por favor, insira o texto da anotação"
             }
         }
     }
-
-    // Função exemplo para salvar a anotação (implemente conforme necessário)
-    /*
-    private fun saveAnnotation(text: String) {
-        // Implementar a lógica para salvar a anotação
-    }
-    */
 }
