@@ -1,13 +1,40 @@
 <resources>
     <string name="app_name">StudyE</string>
-    <string name="welcome_message">Que tal começar a estudar?</string>
     <string name="email_hint">Digite seu email</string>
     <string name="password_hint">Digite sua senha</string>
-    <string name="forgot_password">Esqueceu a senha? Recupere aqui</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
     <string name="login">Login</string>
     <string name="or_login_with">Ou faça login com</string>
     <string name="no_account">Não tem uma conta?</string>
     <string name="sign_up">Se cadastre</string>
     <string name="google_login">Login com Google</string>
+    <string name="remember_me">Lembrar-me</string>
 
+    <string name="settings">Configurações</string>
+    <string name="nova_anotacao">Nova Anotação</string>
+    <!-- Adicione mais strings conforme necessário -->
+    <string name="logout">Logout</string>
+    <string name="logout_confirmation_message">Você realmente deseja sair da sua conta? Você precisará fazer login novamente para acessar o aplicativo.</string>
+
+    <!-- Textos dos Botões -->
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="welcome_message">Olá, %s!</string>
+    <string name="continue_studies">Continue seus estudos</string>
+
+    <string name="your_progress">Seu progresso</string>
+    <string name="hours_studied">Estudadas</string>
+    <string name="tasks_completed">Tarefas</string>
+    <string name="day_streak">Dias seguidos</string>
+    <string name="continue_studying">Continue estudando</string>
+    <string name="next_activities">Próximas atividades</string>
+    <string name="shortcuts">Atalhos</string>
+    <string name="motivational_quote">"O sucesso é a soma de pequenos esforços repetidos dia após dia."</string>
+    <string name="profile_image">Imagem de perfil</string>
+    <!-- Novas strings para tela de cadastro -->
+    <string name="create_account_message">Crie sua conta para começar</string>
+    <string name="name_hint">Nome completo</string>
+    <string name="confirm_password_hint">Confirmar senha</string>
+    <string name="create_account">Criar conta</string>
+    <string name="already_have_account">Já tem uma conta?</string>
 </resources>

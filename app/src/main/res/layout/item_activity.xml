@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Dashboard.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_small">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <ImageView
+            android:id="@+id/activityIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/anotacao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/primary" />
+
+        <TextView
+            android:id="@+id/activityName"
+            style="@style/TextAppearance.Dashboard.Header.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/activityStatus"
+            app:layout_constraintStart_toEndOf="@id/activityIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nome da Atividade" />
+
+        <TextView
+            android:id="@+id/activityDescription"
+            style="@style/TextAppearance.Dashboard.Header.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/activityStatus"
+            app:layout_constraintStart_toEndOf="@id/activityIcon"
+            app:layout_constraintTop_toBottomOf="@id/activityName"
+            tools:text="Descrição breve da atividade" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activityStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pendente"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:chipBackgroundColor="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

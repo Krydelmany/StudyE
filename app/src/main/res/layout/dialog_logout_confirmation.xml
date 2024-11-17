@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color"
+    android:padding="@dimen/spacing_large">
+
+    <!-- Card Container -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/iconContainer"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/spacing_medium"
+        app:cardBackgroundColor="@color/input_background"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logoutIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/logout"
+            android:src="@drawable/ic_logout"
+            app:tint="@color/primary" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Título do Diálogo -->
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Confirmar Logout"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iconContainer" />
+
+    <!-- Mensagem de Confirmação -->
+    <TextView
+        android:id="@+id/dialogMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="@string/logout_confirmation_message"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialogTitle" />
+
+    <!-- Botões -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/positiveButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Sim, fazer logout"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:backgroundTint="@color/card_background"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialogMessage" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/negativeButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Cancelar"
+        android:textAllCaps="false"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        app:backgroundTint="@color/card_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/positiveButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,4 +15,10 @@
     <!-- Cores padrão -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="gray">#BDBDBD</color> <!-- Cinza claro -->
+    <!-- Cores específicas para modo dark -->
+    <color name="avatar_border">#2F2F2F</color>
+    <color name="ripple_color">#33FFFFFF</color>
+    <color name="card_background">#1E1E1E</color>
+    <color name="quote_background">#262626</color>
 </resources>

@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.StudyE" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Personalize as cores e outros atributos do tema -->
-        <item name="colorPrimary">#260f69</item>
+        <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#515151</item>
     </style>
 </resources>

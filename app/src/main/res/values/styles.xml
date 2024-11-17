@@ -1,0 +1,70 @@
+<resources>
+    <!-- Card Styles -->
+    <style name="Widget.Dashboard.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="rippleColor">@color/ripple_color</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="contentPadding">@dimen/spacing_medium</item>
+    </style>
+
+    <style name="Widget.Dashboard.HeaderCard" parent="Widget.Dashboard.Card">
+        <item name="cardBackgroundColor">@color/primary</item>
+        <item name="cardElevation">6dp</item>
+        <item name="android:stateListAnimator">@animator/card_state_list_anim</item>
+    </style>
+
+    <style name="Widget.Dashboard.Card.Quote" parent="Widget.Dashboard.Card">
+        <item name="cardBackgroundColor">@color/quote_background</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+
+    <style name="TextAppearance.Dashboard.Settings.Item" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+    <!-- Text Styles -->
+    <style name="TextAppearance.Dashboard.Header.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">@dimen/text_xxlarge</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="TextAppearance.Dashboard.Header.Subtitle" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:alpha">0.8</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="TextAppearance.Dashboard.SectionTitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">@dimen/text_xlarge</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="TextAppearance.Dashboard.Stats.Number" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">@dimen/text_headline</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.Dashboard.Stats.Label" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:alpha">0.7</item>
+    </style>
+
+    <style name="TextAppearance.Dashboard.Quote" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/poppins_medium_italic</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+</resources>
